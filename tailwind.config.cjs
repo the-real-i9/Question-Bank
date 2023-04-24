@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const tailwindScrollbar = require("tailwind-scrollbar");
 const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
@@ -12,5 +11,5 @@ module.exports = {
       },
     },
   },
-  plugins: [tailwindScrollbar],
+  plugins: [],
 };
