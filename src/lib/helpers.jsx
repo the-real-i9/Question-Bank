@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 export function markdownToHtml(markdownTxt) {
-  // Replace horizontal rules
   let markdown = markdownTxt;
 
+  // Replace horizontal rules
   markdown = markdown.replace(/^---/gm, "<hr>");
 
   // Replace headers
