@@ -80,6 +80,7 @@ function App() {
                     "question-bank__selected-subject",
                     subName
                   );
+                  setShowSubjectsModal(false);
                 }}
                 key={subName}
                 type="button"
