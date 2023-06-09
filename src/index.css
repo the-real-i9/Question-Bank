@@ -26,6 +26,11 @@
 @tailwind base;
 
 @layer base {
+  html, body, #root {
+    @apply w-full;
+    @apply h-full;
+    
+  }
   body, input, button {
       font-family: "Inter";
   }
