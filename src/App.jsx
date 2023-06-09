@@ -9,6 +9,10 @@ function App() {
   const [subjectQuestions, setSubjectQuestions] = useState([]);
 
   useEffect(() => {
+    setSelectedSubject(
+      localStorage.getItem("question-bank__selected-subject") ||
+        "Operating Systems"
+    );
     setCheckedQuestions(
       JSON.parse(
         localStorage.getItem("question-bank__checked-questions") || "[]"
@@ -70,7 +74,13 @@ function App() {
           <div className="subject-list grid grid-cols-4 gap-2 gap-x-4 w-full px-3">
             {subjects.map((subName) => (
               <button
-                onClick={() => setSelectedSubject(subName)}
+                onClick={() => {
+                  setSelectedSubject(subName);
+                  localStorage.setItem(
+                    "question-bank__selected-subject",
+                    subName
+                  );
+                }}
                 key={subName}
                 type="button"
                 className="text-xs text-prim-600 py-0.5"
