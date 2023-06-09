@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import QuestionAnswer from "./components/QuestionAnswer";
+import useSelectiveQuestionsImport from "./hooks/useSelectiveQuestionsImport";
 
 function App() {
   const [checkedQuestions, setCheckedQuestions] = useState([]);
@@ -15,28 +16,17 @@ function App() {
     );
   }, []);
 
-  const subjects = useMemo(
-    () => [
-      ["Operating Systems", import("./lib/questions/operating-systems.json")],
-      ["Databases", import("./lib/questions/databases.json")],
-      ["Comp. Networking", import("./lib/questions/comp-networking.json")],
-      ["HTTP", import("./lib/questions/http.json")],
-      ["Security", import("./lib/questions/security.json")],
-      ["Caching", import("./lib/questions/caching.json")],
-      ["Interview", import("./lib/questions/interview.json")],
-    ],
-    []
-  );
+  const subjects = [
+    "Operating Systems",
+    "Databases",
+    "Comp. Networking",
+    "HTTP",
+    "Security",
+    "Caching",
+    "Interview",
+  ];
 
-  useEffect(() => {
-    (async () => {
-      const subjectQuestionsList = await subjects.find(
-        ([subName]) => subName === selectedSubject
-      )[1];
-
-      setSubjectQuestions(subjectQuestionsList.default);
-    })();
-  }, [selectedSubject, subjects]);
+  useSelectiveQuestionsImport(selectedSubject, setSubjectQuestions);
 
   return (
     <div className="App relative h-full">
@@ -78,7 +68,7 @@ function App() {
         <div className="subjects-modal absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 h-60 bg-white shadow rounded-xl">
           <div className="title text-center mb-3 mt-1 font-bold">Subjects</div>
           <div className="subject-list grid grid-cols-4 gap-2 gap-x-4 w-full px-3">
-            {subjects.map(([subName]) => (
+            {subjects.map((subName) => (
               <button
                 onClick={() => setSelectedSubject(subName)}
                 key={subName}
