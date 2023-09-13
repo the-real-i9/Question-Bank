@@ -64,8 +64,8 @@ function QuestionAnswer({
       </div>
       {answerShow && (
         <div className="answer-body mt-3">
-          <p className="font-bold mb-1 text-slate-800">{question}</p>
-          <p className="text-prim-500 text-sm">{answer}</p>
+          <p className="font-bold mb-1 text-slate-800 text-sm">{question}</p>
+          <p className="text-prim-500 text-xs">{answer}</p>
         </div>
       )}
     </div>

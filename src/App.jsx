@@ -4,14 +4,14 @@ import useSelectiveQuestionsImport from "./hooks/useSelectiveQuestionsImport";
 
 function App() {
   const [checkedQuestions, setCheckedQuestions] = useState([]);
-  const [selectedSubject, setSelectedSubject] = useState("Operating Systems");
+  const [selectedSubject, setSelectedSubject] = useState("HTTP");
   const [showSubjectsModal, setShowSubjectsModal] = useState(false);
   const [subjectQuestions, setSubjectQuestions] = useState([]);
 
   useEffect(() => {
     setSelectedSubject(
       localStorage.getItem("question-bank__selected-subject") ||
-        "Operating Systems"
+        "HTTP"
     );
     setCheckedQuestions(
       JSON.parse(
